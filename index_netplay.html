@@ -1,0 +1,1924 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="UTF-8">
+  <title>PLAYER ONE</title>
+  <style>
+    body {
+      background-image: url("./images/shooterbg.png");
+      background-color: rgb(17, 3, 17);
+      background-size: cover; /* Scale the image to cover the entire body */
+      background-position: center; /* Center the image on the body */
+      background-repeat: no-repeat; /* Prevent the image from repeating */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      height: 100vh; /* Set the height to 3x the viewport height */
+      overflow: hidden; /* Enable vertical scrolling */
+    }
+
+    
+
+    .button-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 50vw;
+      height: 50vh;
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .game-button {
+      width: 25vw;
+      height: 12vh;
+      margin: .7vw 0;
+      padding: 1.5vw 0;
+      background: linear-gradient(to bottom, #8f723e, #2e2610);
+      color: rgb(255, 255, 255);
+      border: none;
+      text-align: center;
+      text-decoration: none;
+      justify-content: center;
+      display: inline-block;
+      font-size: 1.3vw;
+      font-weight: bolder;
+      cursor: pointer;
+      border-radius: .3vw;
+      border: 3px solid black; /* Added border */
+      white-space: nowrap; /* Keep the text on a single line */
+      overflow: hidden; /* Prevent the text from overflowing the button */
+      text-overflow: ellipsis; /* Add an ellipsis (...) when the text overflows */
+
+    }
+
+    .game-button:hover {
+        background: linear-gradient(to bottom, #31c4a1, #08caad);
+    }
+    .menu-button:hover {
+        background: linear-gradient(to bottom, #31c4a1, #08caad);
+    }
+    .back-button:hover {
+        background: linear-gradient(to bottom, #31c4a1, #08caad);
+    }
+
+    .menu-button-connect {
+      position: absolute;
+      top: 40%;
+      left: 31%;
+      width: 38%;
+      height: 12vh;
+      margin: 0px 0;
+      padding: 0px 0;
+      background: linear-gradient(to bottom, #1e7b66, #0d9a84);
+      color: rgb(255, 255, 255);
+      border: 3px solid black; /* Added border */
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 3vw;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: transform 0.3s ease; /* Smooth transform over 0.3 seconds */
+    }
+
+    .menu-button-connect:hover {
+      transform: scale(1.05); /* Increase size to 115% when hovered */
+    }
+
+    .menu-button {
+      position: fixed;
+      top: 40%;
+      left: 30%;
+      width: 40%;
+      height: 8vh;
+      margin: 0px 0;
+      padding-left: 5vw;
+      background: linear-gradient(to bottom, #1e7b66, #0d9a84);
+      color: rgb(255, 255, 255);
+      border: 3px solid black; /* Added border */
+      text-align: left;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 3.5rem;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: transform 0.3s ease; /* Smooth transform over 0.3 seconds */
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05); /* Increase size to 115% when hovered */
+    }
+
+
+
+
+    .genre-buttons-container {
+        
+      display: none;
+      position: fixed;
+      top: 8.5%;
+      left: 20%;
+      justify-content: space-around;
+      align-items: center;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    }
+
+    .genre-button {
+      background-color: "rgb(255, 255, 255, 0.744)";
+      border: none;
+      color: black;
+      background-color: #f1f1f1c0;
+
+      text-align: center;
+      text-decoration: none;
+      font-size: 2.5vw;
+      padding: 10px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: none;
+    }
+
+
+
+    .genre-button:hover {
+    background-color: #08caad !important; /* Add !important to override other rules */
+    }
+    .random-button:hover {
+        background-color: #08caad !important; /* Add !important to override other rules */
+    }
+
+    .arrowButton:hover {
+        background-color: #08caad !important; /* Add !important to override other rules */
+    }
+    .star-button:hover {
+        background-color: #08caad !important; /* Add !important to override other rules */
+    }
+    .reset-button:hover {
+        background-color: #08caad !important; /* Add !important to override other rules */
+    }
+    .plus-button:hover {
+        background-color: #08caad !important; /* Add !important to override other rules */
+    }
+    .control-button:hover {
+        background-color: #08caad !important; /* Add !important to override other rules */
+    }
+
+    .favorite-added {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100000000000000000000000;
+      background-color: #000;
+      color: #1eeef5;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0px 0px 20px #1e7b66;
+      font-weight: bold;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    .favorite-removed {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100000000000000000000000;
+      background-color: #000;
+      color: #b62722;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0px 0px 20px #500404;
+      font-weight: bold;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    .favorite-found {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10000000000000000000000;
+      background-color: #000;
+      color: #b62722;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0px 0px 20px #500404;
+      font-weight: bold;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+
+    .confirmation-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background-color: #000;
+      color: #08caad;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0px 0px 20px #1e7b66;
+      font-weight: bold;
+      text-align: center;
+      font-size: 24px;
+    }
+    .random-button {
+      position: fixed;
+      display: none;
+      top: 79%;
+      left: 85%;
+      background-color: #f1f1f1c0;
+      border: block;
+      color: black;
+      font-size: 4vw;
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .star-button {
+      position: fixed;
+      display: none;
+      top: 21%;
+      left: 80%;
+      width: 10vw;
+      background-color: #f1f1f1c0;
+      border: block;
+      color: black;
+      font-size: 4vw;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 3px solid black;
+      text-align: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .buy-button {
+        background-color: yellow;
+        color: black;
+        border: 3px solid black;
+        border-radius: 20px;
+        font-size: 2em;
+        font-weight: bold;
+        padding: 15px 30px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        left:90%;
+        top:85%;
+        position: fixed;
+      }
+
+      .control-button {
+      position: fixed;
+      display: flex;
+      top: 23%;
+      left: 8%;
+      width: 12vw;
+      background-color: #f1f1f1c0;
+      border: block;
+      color: black;
+      color: green; 
+      font-size: 1.2vw;
+      font-weight: bolder;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 3px solid black;
+      text-align: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .plus-button {
+      position: fixed;
+      display: flex;
+      top: 23%;
+      left: 80%;
+      width: 14vw;
+      background-color: #f1f1f1c0;
+      border: block;
+      color: black;
+      color: green; 
+      font-size: 1.2vw;
+      font-weight: bolder;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 3px solid black;
+      text-align: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .reset-button {
+      position: fixed;
+      display: none;
+      top: 63%;
+      left: 88%;
+      width: 4vw;
+      background-color: #f1f1f1c0;
+      border: block;
+      color: black;
+      font-size: 2vw;
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 3px solid black;
+      text-align: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+
+
+    .systems-button {
+      position: fixed;
+      display: none;
+      top: 79%;
+      left: 7.5%;
+      background-color: #f1f1f1c0;
+      border: block;
+      color: black;
+      font-size: 3rem;
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .systems {
+      position: fixed;
+      display: flex;
+      top: 71%;
+      left: 4.5%;
+      background: linear-gradient(to bottom, #1e7b66, #0d9a84   );
+
+      color: white;
+      font-size: 1.5rem;
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      min-width:160px;
+      width: 160px;
+      text-align: center;
+      text-decoration: none;
+      justify-content: center;
+    }
+
+    .systems:hover {
+        background: #08caad !important; /* Add !important to override other rules */
+    }
+
+    .systems-button:hover {
+        background: #08caad !important; /* Add !important to override other rules */
+    }
+    
+
+    .genre-button:hover {
+      background-color: #ddddddcc;
+    }
+
+    #backButton {
+      position: fixed;
+      top: 93%;
+      z-index: 1000000;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 0;  /* override the padding-left property */
+    }
+
+    .contract-address {
+      position: absolute;
+      display: block;
+      top: 160%;
+      left: 79%;
+      transform: translate(-50%, -50%);
+      font-size: 1rem;
+      font-weight: bolder;
+      z-index: 9999; /* Set a large z-index */
+    }
+
+
+   #downButton{
+      position: fixed;
+      left:66%;
+      top: 40%;
+        background-color: rgba(255, 255, 255, 0.744);
+      font-size: 6vw;
+      font-weight: 900; /* Make the arrows bolder */
+      transition: background-color 0.3s;
+      font-family: Impact, Charcoal, sans-serif;   
+      
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #upButton {
+      position: fixed;
+      left: 30%;
+      top: 40%;
+      background-color: rgba(255, 255, 255, 0.744);
+
+      font-size: 6vw;
+      font-weight: 900; /* Make the arrows bolder */
+      transition: background-color 0.3s;
+      font-family: Impact, Charcoal, sans-serif;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #searchInput {
+        position: fixed;
+        display: none;
+        width: 35vw;
+        height: 6vh;
+        top: 81%;
+        left: 33%;
+        font-size: 2rem;
+        text-align: center;
+        font-weight: bolder;
+        background-color: rgba(255, 255, 255, 0.945);
+    }
+
+
+    #gameScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000000000;
+  margin: auto;
+}
+
+#gameScreenContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56%;
+  height: 82%;
+  display: none; /* Hide the element initially */
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  border-radius: .5vw;
+  border: .5vw solid white; /* Add a 3px black border around the element */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 86%;
+  background-color: black;
+  opacity: 1; /* Adjust the opacity as desired */
+  z-index: 1000000000000000; /* Set the overlay above other elements within the container */
+}
+
+.line1 {
+  color: white;
+  display: none;
+  position: absolute;
+  z-index: 100000000000000000; /* Set the overlay above other elements within the container */
+  left: 50%;
+  top: 30%;
+  font-size: 3vw;
+  transform: translate(-50%, -50%);
+}
+
+.line2 {
+  color: white;
+  display: none;
+  position: absolute;
+  z-index: 100000000000000000; /* Set the overlay above other elements within the container */
+  left: 50%;
+  top: 40%;
+  font-size: 3vw;
+  transform: translate(-50%, -50%);
+}
+
+
+.line3 {
+  color: white;
+  display: none;
+  position: absolute;
+  z-index: 100000000000000000; /* Set the overlay above other elements within the container */
+  left: 50%;
+  top: 50%;
+  font-size: 3vw;
+  transform: translate(-50%, -50%);
+}
+
+
+    @media (max-width: 1000px) {
+
+      #backButton {
+        width: 85%;
+        left:10%;
+      }
+      #connectWalletButton {
+        width: 85%;
+        height:9%;
+        left:10%;
+      }
+    }
+
+
+
+    .EJS_status {
+      height: 10px; /* Adjust this value to your preferred height */
+    }
+
+    #twitter-icon {
+      position: absolute;
+      top: 130%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      transform: scale(.4, .4 );
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    #twitter-icon img {
+      width: 100px; /* adjust size as needed */
+      height: 100px; /* adjust size as needed */
+    }
+
+    #etherscan-icon {
+      display: none;
+      position: absolute;
+      top: 30%;
+      left: 83%;
+      transform: translate(-50%, -50%);
+      z-index: 1000000000000;
+      cursor: pointer;
+    }
+
+    #etherscan-icon img {
+      width: 100px; /* adjust size as needed */
+      height: 100px; /* adjust size as needed */
+    }
+    #chart-icon {
+      position: absolute;
+      top: 139%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      transform: scale(.4, .4);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    #chart-icon img {
+      width: 100px; /* adjust size as needed */
+      height: 100px; /* adjust size as needed */
+    }
+
+    #discord-icon {
+      position: absolute;
+      top: 147%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      transform: scale(.4, .4);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    #discord-icon img {
+      width: 100px; /* adjust size as needed */
+      height: 100px; /* adjust size as needed */
+    }
+
+  </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+
+<body>
+  <button class="menu-button-connect" id="connectWalletButton" onclick="connectWallet()">LOADING...</button>
+  <button class="menu-button" id="backButton" style="display: none;">BACK</button>
+
+  <div id="etherscan-icon" onclick="window.open('https://etherscan.io/token/0xbcca8ac7025cf59479d6b99aadcaee8b25ab122b/', '_blank')">
+    <img src="./images/etherscan.png" alt="Etherscan">
+  </div>
+
+
+  <div id="gameContainer">  
+    <div id="gameScreenContainer">
+      <div id="gameScreen"></div>
+    </div>
+    <div class="button-container" id="game">
+
+    </div>
+
+    <span class="line1" id="line1">>Play Now - Load Files</span>
+    <span class="line2" id="line2">>Click Screen</span>
+    <span class="line3" id="line3">>Enter - Start Game</span>
+
+    <div id="genre-buttons-container" class="genre-buttons-container">
+        <button class="genre-button" id="adventureButton" title="Action/Adventure">🌎</button>
+        <button class="genre-button" id="platformersButton" title="Platformers">🏃</button>
+        <button class="genre-button" id="racingButton" title="Racing">🏎️</button>
+        <button class="genre-button" id="shootersButton" title="Shooters">🔫</button>
+        <button class="genre-button" id="fightingButton" title="Fighting">🥊</button>
+        <button class="genre-button" id="sportsButton" title="Sports">🏈</button>
+        <button class="genre-button" id="puzzleButton" title="Puzzle/Strategy">🧩</button>
+        <button class="genre-button" id="rpgButton" title="RPG">⚔️</button>
+        <button class="genre-button" id="miscButton" title="Misc">❓</button>
+    </div>
+    
+    <div id="arrowButtons">
+      <button id="leftArrowButton" onclick="decrementStepNumber()">&#8592;</button>
+      <button id="rightArrowButton" onclick="incrementStepNumber()">&#8594;</button>
+    </div>
+
+      <button class="random-button" id="randomButton" title="Random">🎲</button>
+      <button class="star-button" id="starButton" title="Favorites">⭐</button>
+      <button class="plus-button" id="plusButton" title="Find Match">FIND MATCH</button>
+      <button class="reset-button" id="resetButton" title="Reset Favorites">❌</button>
+      <button class="control-button" id="controlButton" title="Controls">CONTROLS</button>
+
+      <button class="systems-button" id="systemsButton">🖥️</button>
+      <button class="systems" id="genesis_system">genesis</button>
+      <button class="systems" id="turbografx_system" style="top: 62%;">turbografx</button>
+
+
+      <button id="upButton" class="arrowButton">&#x2191;</button>
+      <button id="downButton" class="arrowButton">&#x2193;</button>
+      <input type="text" id="searchInput" placeholder="search games...">
+  </div>
+  
+  <script type="text/javascript">
+    connectWallet();
+    const contractAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_maxTxAmount","type":"uint256"}],"name":"MaxTxAmountUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"_maxTaxSwap","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_maxTxAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_maxWalletSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_taxSwapThreshold","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"openTrading","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"removeLimits","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawETH","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}];
+
+    const contractAddress = '0xbCCA8aC7025cf59479D6B99AADCAeE8b25Ab122B';
+
+    const gameContainer = document.getElementById('gameContainer');
+    const gameButtonsContainer = document.getElementById('gameButtons');
+    const gameButtons = document.getElementsByClassName('game-button');
+    const upButton = document.getElementById('upButton');
+    const downButton = document.getElementById('downButton');
+    let scrollIndex = 0;
+    const buttonsPerPage = 5;
+
+    function showButtons() {
+      // Convert gameButtons to an array and hide all the game buttons
+      [...gameButtons].forEach(button => button.style.display = 'none');
+
+      // Show the game buttons in the current scrollIndex range
+      [...gameButtons].slice(scrollIndex, scrollIndex + buttonsPerPage).forEach(button => button.style.display = 'block');
+    }
+
+    function scrollUp() {
+      if (scrollIndex - 2 >= 0) {
+        scrollIndex -= 2;
+      } else if (scrollIndex - 1 >= 0) {
+        scrollIndex -= 1;
+      } else {
+        return; // No change in scrollIndex, so exit function early
+      }
+      showButtons();
+    }
+
+
+    function scrollDown() {
+    if (scrollIndex + buttonsPerPage < gameButtons.length) {
+      scrollIndex += 2;
+    } else {
+      return; // No change in scrollIndex, so exit function early
+    }
+    showButtons();
+  }
+
+
+    function handleMouseWheel(event) {
+      if (event.deltaY < 0) {
+        // Mouse wheel scrolled up
+        scrollUp();
+      } else if (event.deltaY > 0) {
+        // Mouse wheel scrolled down
+        scrollDown();
+      }
+    }
+
+// Add the event listener to the window
+window.addEventListener("wheel", handleMouseWheel);
+
+// Add the event listener to the window
+window.addEventListener("wheel", handleMouseWheel);
+
+    showButtons();
+
+    let scrollInterval;
+
+    upButton.addEventListener('mousedown', () => {
+      scrollUp(); // Call scrollUp once on initial press
+      scrollInterval = setInterval(scrollUp, 200);
+    });
+
+    upButton.addEventListener('mouseup', () => {
+      clearInterval(scrollInterval);
+    });
+
+    upButton.addEventListener('mouseleave', () => {
+      clearInterval(scrollInterval);
+    });
+
+    downButton.addEventListener('mousedown', () => {
+      scrollDown(); // Call scrollDown once on initial press
+      scrollInterval = setInterval(scrollDown, 200);
+    });
+
+    downButton.addEventListener('mouseup', () => {
+      clearInterval(scrollInterval);
+    });
+
+    downButton.addEventListener('mouseleave', () => {
+      clearInterval(scrollInterval);
+    });
+
+    const launchedIframes = {};
+    const userTokenBalances = {};
+    let userAddress; // Declare userAddress globally
+    let demoTimeoutSet = false;
+    let selectedGenre = null;
+    let currentRandomButtonEventListener = null;
+
+    let gameTitles = [];
+
+
+    function loadGame(genre) {
+      selectedGenre = genre;
+      launchedIframes[userAddress] = (launchedIframes[userAddress] || 0) + 1;
+
+      document.getElementById('backButton').style.display = "block";
+
+
+      const gameList = topgames.filter(game => game.gameGenre === genre);
+      if (gameList.length === 0) {
+        console.log(`No topgames found for genre ${genre}`);
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * gameList.length);
+      const randomGame = gameList[randomIndex];
+
+      // Launch the selected game
+      initSpecificGame(randomGame.zipName);
+
+      // Update the connect wallet button text with the selected game title
+      document.getElementById('connectWalletButton').innerText = randomGame.gameTitle;
+
+      updateRandomButtonEventListener();
+    }
+
+
+    function loadGameButtons(genre, topgames) {
+      selectedGenre = genre;
+      launchedIframes[userAddress] = (launchedIframes[userAddress] || 0) + 1;
+
+      document.getElementById('backButton').style.display = "block";
+
+      const gameList = topgames.filter(game => game.gameGenre === genre);
+      if (!gameList || gameList.length === 0) {
+        console.log(`No topgames found for genre ${genre}`);
+        return;
+      }
+
+      // Hide all game buttons
+      for (let i = 0; i < gameButtons.length; i++) {
+        gameButtons[i].style.display = 'none';
+      }
+
+      // Show game buttons associated with the selected genre
+      for (let i = 0; i < Math.min(gameList.length, 5); i++) {
+        const gameElement = document.getElementById(`game${i}`);
+        if (gameElement) {
+          gameElement.style.display = 'block';
+          gameElement.dataset.zip = gameList[i].zipName;
+          gameElement.innerText = gameList[i].gameTitle;
+        } else {
+          break; // No more topgames in the list, exit the loop
+        }
+      }
+
+      updateRandomButtonEventListener();
+    }
+
+    function updateRandomButtonEventListener() {
+        const randomButton = document.getElementById('randomButton');
+
+        // Remove any existing event listener
+        if (currentRandomButtonEventListener) {
+            randomButton.removeEventListener('click', currentRandomButtonEventListener);
+        }
+
+        // Add a new event listener with the updated selectedGenre
+        currentRandomButtonEventListener = () => loadRandomGame(selectedGenre);
+        randomButton.addEventListener('click', currentRandomButtonEventListener);
+    }
+
+    document.getElementById('adventureButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Action/Adventure');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Action/Adventure');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([adventureGames1, adventureGames2]) => {
+        const combinedAndSortedAdventureGames = concatAndSortGameLists(adventureGames1, adventureGames2);
+        populateGameButtons(combinedAndSortedAdventureGames);
+      });
+    });
+
+
+    document.getElementById('platformersButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Platformer');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Platformer');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([platformerGames1, platformerGames2]) => {
+        const combinedAndSortedPlatformerGames = concatAndSortGameLists(platformerGames1, platformerGames2);
+        populateGameButtons(combinedAndSortedPlatformerGames);
+      });
+    });
+
+    document.getElementById('racingButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Racing');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Racing');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([racingGames1, racingGames2]) => {
+        const combinedAndSortedRacingGames = concatAndSortGameLists(racingGames1, racingGames2);
+        populateGameButtons(combinedAndSortedRacingGames);
+      });
+    });
+
+    document.getElementById('shootersButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Shooter');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Shooter');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([shooterGames1, shooterGames2]) => {
+        const combinedAndSortedShooterGames = concatAndSortGameLists(shooterGames1, shooterGames2);
+        populateGameButtons(combinedAndSortedShooterGames);
+      });
+    });
+
+    document.getElementById('fightingButton').addEventListener('click', function () {
+      scrollIndex = 0;
+      
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Fighting');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Fighting');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([fightingGames1, fightingGames2]) => {
+        const combinedAndSortedFightingGames = concatAndSortGameLists(fightingGames1, fightingGames2);
+        populateGameButtons(combinedAndSortedFightingGames);
+      });
+    });
+
+    document.getElementById('sportsButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Sports');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Sports');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([sportsGames1, sportsGames2]) => {
+        const combinedAndSortedSportsGames = concatAndSortGameLists(sportsGames1, sportsGames2);
+        populateGameButtons(combinedAndSortedSportsGames);
+      });
+    });
+
+    document.getElementById('puzzleButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Puzzle/Strategy');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Puzzle/Strategy');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([puzzleGames1, puzzleGames2]) => {
+        const combinedAndSortedPuzzleGames = concatAndSortGameLists(puzzleGames1, puzzleGames2);
+        populateGameButtons(combinedAndSortedPuzzleGames);
+      });
+    });
+
+    document.getElementById('rpgButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Role-Playing Game (RPG)');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Role-Playing Game (RPG)');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([rpgGames1, rpgGames2]) => {
+        const combinedAndSortedRpgGames = concatAndSortGameLists(rpgGames1, rpgGames2);
+        populateGameButtons(combinedAndSortedRpgGames);
+      });
+    });
+
+    
+    document.getElementById('miscButton').addEventListener('click', function () {
+      scrollIndex = 0
+      const filterPromise1 = filterGamesByGenreFromFile("./ziplist_netplay.txt", 'Misc');
+      const filterPromise2 = filterGamesByGenreFromFile("./ziplistTurbografx.txt", 'Misc');
+
+      Promise.all([filterPromise1, filterPromise2]).then(([miscGames1, miscGames2]) => {
+        const combinedAndSortedMiscGames = concatAndSortGameLists(miscGames1, miscGames2);
+        populateGameButtons(combinedAndSortedMiscGames);
+      });
+    });
+
+
+    document.getElementById('starButton').addEventListener('click', () =>startGameFavorites());
+    document.getElementById('resetButton').addEventListener('click', () =>clearFavoritesList(userAddress));
+    document.getElementById('controlButton').addEventListener('click', () =>toggleControls());
+    document.getElementById('plusButton').addEventListener('click', () =>netplayInstructions());
+    document.getElementById('randomButton').addEventListener('click', () => loadRandomGame('Action/Adventure', 'Fighting', 'Sports', 'Racing', 'Platformer', 'Puzzle/Strategy', 'Role-Playing Game (RPG)', 'Shooter', 'Misc'));
+    let newButton = document.getElementById("plusButton");
+
+
+
+    let lastSystem = '';
+    document.getElementById('genesis_system').addEventListener('click', () => {
+      lastSystem = 'segaMD';
+      sortedlist = sortListAlphabetically(topgames);
+      populateGameButtons(sortedlist, lastSystem);
+    });
+
+    document.getElementById('turbografx_system').addEventListener('click', () => {
+      lastSystem = 'turbografx';
+      sortedlist = sortListAlphabetically(topgames);
+      populateGameButtons(sortedlist, lastSystem);
+    });
+
+    document.getElementById('systemsButton').addEventListener('click', () =>  hideSystemButton());
+   
+    document.getElementById('backButton').addEventListener('click', () => backButton());
+
+    function backButton() {
+      if (gameLoaded === true) {
+        window.location.href = window.location.href;
+      } else {
+        window.location.href = "index_home.html";
+      }
+    }
+
+    function startGameFavorites() {
+            window.location.href = "index_favorites.html";
+        }
+
+
+    function filterGamesByGenre(topgames, genre) {
+        return topgames.filter(game => game.gameGenre === genre);
+        }
+
+    async function filterGamesByGenreFromFile(fileUrl, targetGenre) {
+        const response = await fetch(fileUrl);
+        const text = await response.text();
+        const lines = text.split('\n');
+        const filteredGames = [];
+
+        lines.forEach(line => {
+          const splitLine = line.split(' - ');
+          if (splitLine.length === 3) {
+            const zipName = splitLine[0].trim();
+            const gameTitle = splitLine[1].trim(); // Rename gameName to gameTitle
+
+            const gameGenre = splitLine[2].trim();
+
+            if (gameGenre === targetGenre) {
+              filteredGames.push({ zipName, gameTitle }); // Only include zipName and gameTitle
+            }
+          }
+        });
+        
+        return filteredGames;
+      }
+
+  
+      function addFavoriteGame(userAddress, zipFileName) {
+        // Load the user's favorites list from local storage
+        const favoritesString = localStorage.getItem(userAddress);
+        let favorites = favoritesString ? JSON.parse(favoritesString) : [];
+
+        const gameIndex = findGameIndexByZipName(zipFileName);  
+        if (gameIndex === -1) {
+          console.error(`Could not find game with zipFileName ${zipFileName}`);
+          return;
+        }
+        const gameTitle = topgames[gameIndex].gameTitle;
+
+        // Add the new game to the favorites list, if it's not already there
+        if (!favorites.includes(zipFileName)) {
+          favorites.push(zipFileName);
+          console.log(favorites);
+
+          // Save the updated favorites list to local storage
+          localStorage.setItem(userAddress, JSON.stringify(favorites));
+
+          // Create the alert element
+          const alertElement = document.createElement('div');
+          alertElement.classList.add('favorite-added');
+          alertElement.innerText = `${gameTitle} has been added to your favorites list!`;
+          console.log(favorites);
+
+          // Append the alert element to the document
+          document.body.appendChild(alertElement);
+
+          // Remove the alert after 3 seconds
+          setTimeout(() => {
+            alertElement.parentNode.removeChild(alertElement);
+          }, 3000);
+        } else {
+          // Log in red text color that says game is already found
+          const alertElement2 = document.createElement('div');
+          alertElement2.classList.add('favorite-found');
+          alertElement2.innerText = `${gameTitle} already on the list!`;
+          console.log("already on the list");
+
+          // Append the alert element to the document
+          document.body.appendChild(alertElement2);
+
+          // Remove the alert after 3 seconds
+          setTimeout(() => {
+            alertElement.parentNode.removeChild(alertElement2);
+          }, 3000);
+
+        }
+
+        const userFavorites = getUserFavorites(userAddress);
+      }
+
+      // Global variable to track whether controls are displayed
+      let isControlsDisplayed = false;
+      let controlsDiv = null;
+
+      function toggleControls() {
+        if (isControlsDisplayed) {
+            // Controls are currently displayed, so remove them
+            controlsDiv.remove();
+            isControlsDisplayed = false;
+        } else {
+            // Controls are not currently displayed, so display them
+            controlsDiv = document.createElement("div");
+
+            // Set the styles for the div
+            controlsDiv.style.width = "50vw"; // increased to accommodate padding
+            controlsDiv.style.height = "50vh"; // increased to accommodate padding
+            controlsDiv.style.backgroundColor = "black";
+            controlsDiv.style.color = "white";
+            controlsDiv.style.position = "fixed";
+            controlsDiv.style.top = "50%";
+            controlsDiv.style.left = "50%";
+            controlsDiv.style.transform = "translate(-50%, -50%)";
+            controlsDiv.style.padding = "2vw 2vh"; // added padding
+            controlsDiv.style.boxSizing = "border-box";
+            controlsDiv.style.display = "flex";
+            controlsDiv.style.flexDirection = "column";
+            controlsDiv.style.justifyContent = "center";
+            controlsDiv.style.alignItems = "center";
+            controlsDiv.style.textAlign = "center";
+            controlsDiv.style.zIndex = "10000000000000000000000000"; // added z-index
+            controlsDiv.style.border = "0.5vw solid white"; // added border
+
+            // Create a new h1 element for the header
+            let header = document.createElement("h1");
+            header.style.fontWeight = "bold";
+            header.innerText = "Controls:";
+            
+            // Add the header to the div
+            controlsDiv.appendChild(header);
+
+            // Create an array of the body texts
+            let controls1 = ["Shift - Insert Coin", "Enter - Start Game", "Arrow Keys - Movement"];
+            let controls2 = ["Z - Button 1", "X - Button 2", "A - Button 3", "S - Button 4"];
+
+            let controlsContainer = document.createElement("div");
+            controlsContainer.style.display = "flex";
+            controlsContainer.style.justifyContent = "space-between";
+
+            let column1 = document.createElement("div");
+            let column2 = document.createElement("div");
+
+            // Add a right margin to column1 to space the columns apart
+            column1.style.marginRight = "5vw";
+
+            // Create p elements for the body texts and add them to the div
+            for(let control of controls1){
+                let paragraph = document.createElement("p");
+                paragraph.innerText = control;
+                column1.appendChild(paragraph);
+            }
+
+            for(let control of controls2){
+                let paragraph = document.createElement("p");
+                paragraph.innerText = control;
+                column2.appendChild(paragraph);
+            }
+
+            controlsContainer.appendChild(column1);
+            controlsContainer.appendChild(column2);
+
+            // Append the div to the body of the document
+            controlsDiv.appendChild(controlsContainer);
+            document.body.appendChild(controlsDiv);
+
+            isControlsDisplayed = true;
+        }
+    }
+
+    // function netplayInstructions() {
+    //   console.log("button clicked")
+    // }
+
+    function netplayInstructions() {
+      // Create the image element
+      const imageElement = document.createElement('img');
+        // Create the image element
+      imageElement.id = 'stepImage'; // Add id attribute
+      imageElement.src = './images/step1.png';
+      imageElement.style.width = '60%';
+      imageElement.style.height = '70%';
+      imageElement.style.position = 'fixed';
+      imageElement.style.top = '50%';
+      imageElement.style.left = '50%';
+      imageElement.style.transform = 'translate(-50%, -50%)';
+      imageElement.style.zIndex = '10000000000000000000000000';
+      imageElement.style.backgroundColor = 'white';
+      imageElement.style.padding = '1%';
+      imageElement.style.borderRadius = '10px';
+
+      // Add event listener to remove the image when clicked outside
+      imageElement.addEventListener('click', (event) => {
+        if (event.target === imageElement) {
+          imageElement.remove();
+        }
+      });
+      // Append the image element to the body of the document
+      document.body.appendChild(imageElement);
+    }
+
+
+    function findGameIndexByZipName(zipFileName) {
+      const gameIndex = topgames.findIndex(game => game.zipName === zipFileName);
+      
+      if (gameIndex === -1) {
+        console.log(`Game with zip file name ${zipFileName} not found.`);
+      }
+      
+      return gameIndex;
+    }
+    function clearFavoritesList(userAddress) {
+      const confirmed = confirm('Are you sure you want to clear your favorites list? This action cannot be undone.');
+      if (confirmed) {
+        localStorage.removeItem(userAddress);
+        populateGameButtons(topgames);
+
+          // Create the alert element
+          const alertElement3 = document.createElement('div');
+          alertElement3.classList.add('favorite-removed');
+          alertElement3.innerText = `Your favorites list has been cleared!`;
+          console.log("favs removed");
+
+          // Append the alert element to the document
+          document.body.appendChild(alertElement3);
+
+          // Remove the alert after 3 seconds
+          setTimeout(() => {
+            alertElement3.parentNode.removeChild(alertElement3);
+          }, 3000);
+      }
+      // Select the confirm dialog box and add the confirmation-message class
+      const confirmBox = document.querySelector('.confirm');
+      confirmBox.classList.add('confirmation-message');
+    }
+
+    let shortAddress = null;
+    // Connect Wallet function
+    async function connectWallet() {
+      if (window.ethereum) {
+        try {
+          const provider = window.ethereum;
+          provider.autoRefreshOnNetworkChange = false; // Suppress warning
+          
+          await provider.request({ method: 'eth_requestAccounts' });
+          
+          provider.on('accountsChanged', (accounts) => {
+            console.log('Accounts changed:', accounts);
+          });
+
+          provider.on('chainChanged', (chainId) => {
+            console.log('Chain changed:', chainId);
+          });
+
+          provider.on('disconnect', (error) => {
+            console.error('Disconnected:', error);
+          });
+          
+          const web3 = new Web3(provider);
+          userAddress = (await web3.eth.getAccounts())[0];
+          const contract = new web3.eth.Contract(contractAbi, contractAddress);
+          const balance = await contract.methods.balanceOf(userAddress).call();
+          console.log("balance: " + balance);
+          // Round balance to the nearest whole number
+          const roundedBalance = Math.round(balance/10**9);
+
+          if (balance) {
+            // Store the mapping in the global object
+            userTokenBalances[userAddress] = parseInt(balance)/10**9;
+
+            document.getElementById('game').style.display = 'flex';
+            document.getElementById('genre-buttons-container').style.display = "flex";
+            document.getElementById('searchInput').style.display = "flex";
+/*             document.getElementById('upButton').style.display = "flex";
+            document.getElementById('downButton').style.display = "flex";
+            document.getElementById('randomButton').style.display = "flex";
+            document.getElementById('starButton').style.display = "flex";
+            document.getElementById('systemsButton').style.display = "flex"; */
+            document.getElementById('connectWalletButton').style.height = '8vh';
+            document.getElementById('connectWalletButton').style.fontSize = '2rem';
+            document.getElementById('backButton').style.fontSize = '2rem';
+
+            document.getElementById('backButton').style.display = "block";
+            document.getElementById('connectWalletButton').style.top = "0%";
+
+            document.body.style.backgroundImage = 'url("./images/shooterbg.png")';
+            document.body.style.height = '100vh';
+            document.body.style.overflow = 'hidden';
+
+
+            // update game buttons
+            populateGameButtons(topgames);
+
+            // Update the Connect Wallet button
+            shortAddress = userAddress.slice(0, 9) + '...';
+            document.getElementById('connectWalletButton').innerText = shortAddress;
+            connectWalletButton.style.paddingLeft = "3vw";
+            
+            document.getElementById('upButton').style.display = "block";
+            document.getElementById('downButton').style.display = "block";
+          } else {
+
+            // Update the Connect Wallet button
+            shortAddress = userAddress.slice(0, 9) + '...';
+            document.getElementById('connectWalletButton').innerText = shortAddress;
+
+            document.getElementById('connectWalletButton').style.height = '8vh';
+            document.getElementById('connectWalletButton').style.fontSize = '2rem';
+            document.getElementById('connectWalletButton').style.top = "0%";
+          }
+
+          } catch (error) {
+            console.error(error);
+            alert('Failed to connect wallet');
+          }
+        } else {
+          alert('No Ethereum browser extension detected. Please install MetaMask.');
+        }
+      }
+      
+    // Add event listener for the Connect Wallet button
+    document.getElementById('connectWalletButton').addEventListener('click', connectWallet);
+
+
+
+    
+    const searchInput = document.getElementById('searchInput');
+    const gameButtons1 = document.querySelectorAll('.game-button');
+
+    searchInput.addEventListener('input', (event) => {
+    const searchText = event.target.value.toLowerCase();
+    let displayedCount = 0;
+    const maxDisplayed = 5; // Set the maximum number of displayed game buttons
+
+    gameButtons1.forEach((gameButton) => {
+        const gameTitle = gameButton.textContent.toLowerCase();
+        if (displayedCount < maxDisplayed && gameTitle.includes(searchText)) {
+            gameButton.style.display = 'inline-block';
+            displayedCount += 1; // Increment displayedCount by 1 for each displayed game button
+        } else {
+            gameButton.style.display = 'none';
+        }
+    });
+
+    });
+
+
+    function getRandomGame(topgames) {
+        const randomIndex = Math.floor(Math.random() * topgames.length);
+        return topgames[randomIndex];
+    }
+
+    function loadRandomGame(...genres) {
+      const combinedGames = [];
+      genres.forEach(genre => {
+        const gameList = topgames.filter(game => game.gameGenre === genre);
+        if (gameList.length > 0) {
+          combinedGames.push(...gameList);
+        }
+      });
+      if (combinedGames.length === 0) {
+        console.log(`No topgames found for genres: ${genres.join(', ')}`);
+        return;
+      }
+      const randomIndex = Math.floor(Math.random() * combinedGames.length);
+      const randomGame = combinedGames[randomIndex];
+      initSpecificGame(randomGame.zipName);
+      updateConnectWalletText(randomGame.gameTitle);
+    }
+
+
+    async function processZipListFile(fileUrl, genreFileUrl) {
+        const response = await fetch(fileUrl);
+        const text = await response.text();
+        const lines = text.split('\n');
+        const zipNames = [];
+        const gameNames = [];
+        const gameGenres = [];
+
+        lines.forEach(line => {
+          const splitLine = line.split(' - ');
+          zipNames.push(splitLine[0].trim());
+          gameNames.push(splitLine[1].trim());
+          gameGenres.push(''); // initialize the genre to an empty string
+        });
+
+        if (genreFileUrl) {
+          const response = await fetch(genreFileUrl);
+          const text = await response.text();
+          const lines = text.split('\n');
+          const gameTitles = [];
+          const gameGenres2 = [];
+
+          lines.forEach(line => {
+            const splitLine = line.split(' - ');
+            gameTitles.push(splitLine[0].trim());
+            gameGenres2.push(splitLine[1].trim());
+          });
+
+          gameNames.forEach((gameName, index) => {
+            const gameTitleIndex = gameTitles.indexOf(gameName);
+            if (gameTitleIndex >= 0) {
+              gameGenres[index] = gameGenres2[gameTitleIndex];
+            }
+          });
+        }
+        
+        return { zipNames, gameNames, gameGenres };
+      }
+
+    async function processZipListOneFile(fileUrl, genreFileUrl) {
+      const response = await fetch(fileUrl);
+      const text = await response.text();
+      const lines = text.split('\n');
+      const zipNames = [];
+      const gameNames = [];
+      const gameGenres = [];
+      const gameSystems = [];
+
+      let numFields = -1; // initialize to an invalid value
+
+      lines.forEach(line => {
+        const splitLine = line.split(' - ');
+        if (splitLine.length === 2) {
+          zipNames.push(splitLine[0].trim());
+          gameNames.push(splitLine[1].trim());
+        } else if (splitLine.length === 3) {
+          zipNames.push(splitLine[0].trim());
+          gameNames.push(splitLine[1].trim());
+          gameGenres.push(splitLine[2].trim());
+        }
+        else if (splitLine.length === 4) {
+          zipNames.push(splitLine[0].trim());
+          gameNames.push(splitLine[1].trim());
+          gameGenres.push(splitLine[2].trim());
+          gameSystems.push(splitLine[3].trim());
+        }
+      });
+
+      return { zipNames, gameNames, gameGenres, gameSystems };
+    }
+
+
+    // let gameNames;
+    // let zipNames;
+    // (async () => {
+    //   ({ zipNames, gameNames } = await processZipListFile('./ziplist.txt'));
+    // })();
+
+
+
+    async function loadZipList(zipfilepath) {
+      const response = await fetch(zipfilepath);
+      const text = await response.text();
+      const pceGames = text.split('\n').filter(line => line.trim() !== '');
+      return pceGames;
+    }
+
+
+    let topgames = [];
+    async function filterGames(inputUrl, genreUrl, validGenres = ['Action/Adventure', 'Fighting', 'Sports', 'Racing', 'Platformer', 'Puzzle/Strategy', 'Role-Playing Game (RPG)', 'Shooter', 'Misc']) {
+      const { zipNames, gameNames, gameGenres } = await processZipListFile(inputUrl, genreUrl);
+
+      gameNames.forEach((title, index) => {
+        const zipName = zipNames[index];
+        const genre = gameGenres[index];
+        if (zipName && title && genre && validGenres.includes(genre)) {
+          topgames.push({ zipName, gameTitle: title, gameGenre: genre });
+        }
+      });
+
+      return topgames;
+    }
+
+
+  
+    async function filterGamesOneFile(inputUrl, genreUrl, validGenres = ['Action/Adventure', 'Fighting', 'Sports', 'Racing', 'Platformer', 'Puzzle/Strategy', 'Role-Playing Game (RPG)', 'Shooter', 'Misc']) {
+      const { zipNames, gameNames, gameGenres, gameSystems } = await processZipListOneFile(inputUrl);
+      let topgames = [];
+      gameNames.forEach((title, index) => {
+        const zipName = zipNames[index];
+        const genre = gameGenres[index];
+        const system = gameSystems[index];
+
+        if (zipName && title && genre && validGenres.includes(genre)) {
+          topgames.push({ zipName, gameTitle: title, gameGenre: genre, gameSystem: system });
+        }
+      });
+
+      return topgames;
+    }
+
+    function findGameIndexByZipName(zipFileName) {
+      return topgames.findIndex(game => game.zipName === zipFileName);
+    }
+
+  
+    function getUserFavorites(userAddress) {
+    // Load the user's favorites list from local storage
+    const favoritesString = localStorage.getItem(userAddress);
+    const favoritesZipNames = favoritesString ? JSON.parse(favoritesString) : [];
+
+    // Create an array of favorite game objects
+    const favorites = favoritesZipNames.map(zipName => {
+        const gameIndex = findGameIndexByZipName(zipName);
+        if (gameIndex !== -1) {
+        const { zipName, gameTitle, gameGenre, gameSystem } = topgames[gameIndex];
+        return { zipName, gameTitle, gameGenre, gameSystem };
+        }
+    }).filter(game => game);
+
+    return favorites;
+    }
+
+    function compareGameLists(list1, list2, zipName) {
+      const foundInList1 = list1.some(game => game.zipName === zipName);
+      const foundInList2 = list2.some(game => game.zipName === zipName);
+
+      if (foundInList1 && foundInList2) {
+        return `Zip ${zipName} found in both lists.`;
+      } else if (foundInList1) {
+        return 1;
+      } else if (foundInList2) {
+        return 2;
+      } else {
+        return 0;
+      }
+    }
+
+
+      (async () => {
+        const topgamesUrl = './ziplist_netplay.txt';
+        topgames = await filterGamesOneFile(topgamesUrl);
+        console.log("top games: " + topgames);
+        
+        console.log("top games: " + topgames)
+      })();
+
+
+
+    function getRandomGame(topgames) {
+      const randomIndex = Math.floor(Math.random() * topgames.length);
+      return topgames[randomIndex];
+    }
+  
+
+    async function initEmulator(zipfilepath) {
+      const pceGames = await loadZipList(zipfilepath);
+      const randomGame = getRandomGame(pceGames);
+
+      if(zipfilepath == './ziplist_netplay.txt') {
+        EJS_player = '#gameScreen';
+        EJS_gameUrl = './' + randomGame;
+        EJS_core = 'segaMD';
+      }
+
+      if(zipfilepath == './ziplistTurbografx.txt') {
+        EJS_player = '#gameScreen';
+        EJS_biosUrl = './bios.pce'; // Url to Bios file
+        EJS_gameUrl = './' + randomGame;
+        EJS_core = 'pce';
+
+        
+      }
+
+
+      const script = document.createElement('script');
+      script.src = 'https://www.emulatorjs.com/loader.js';
+
+      // Set the display property to "flex" to show the game screen
+      document.getElementById('gameScreenContainer').style.display = 'fixed';
+
+      document.getElementById('backButton').style.display = "block";
+      document.getElementById('genre-buttons-container').style.display = "none";
+      document.getElementById('searchInput').style.display = "none";
+      document.getElementById('randomButton').style.display = "none";
+      document.getElementById('systemsButton').style.display = "none";
+
+
+      // hide game buttons
+      for (let i = 0; i < gameButtons.length; i++) {
+        gameButtons[i].style.display = 'none';
+      }
+
+      document.body.appendChild(script);
+    }
+
+    function createGrayBoxOverlay() {
+      let grayOverlay = document.getElementById('gray-overlay');
+
+      if (!grayOverlay) {
+        grayOverlay = document.createElement('div');
+        grayOverlay.id = 'gray-overlay';
+        grayOverlay.style.position = 'fixed';
+        grayOverlay.style.top = '50%';
+        grayOverlay.style.left = '50%';
+        grayOverlay.style.width = '68vw';
+        grayOverlay.style.height = '84vh';
+        grayOverlay.style.backgroundColor = 'rgb(51, 51, 51)';
+        grayOverlay.style.transform = 'translate(-50%, -50%)';
+        grayOverlay.style.zIndex = -10;
+        document.body.appendChild(grayOverlay);
+      } else {
+        grayOverlay.style.display = 'block';
+      }
+    }
+
+    let currentGameName = ''
+    let demoGamePlayed = false;
+    let gameLoading = false;
+    let gameLoaded = false;
+    let gameStartTime;
+    let lastKeyPressTime;
+    let inactiveTime = 0;  // Track total time of inactivity
+
+
+    async function initSpecificGame(zipFileName, systemCode) {
+      const gameScreenContainer = document.getElementById('gameScreenContainer');
+      const gameScreen = document.getElementById('gameScreen');
+
+      // Set the display property to "flex" to show the game screen
+      gameScreenContainer.style.display = 'flex';
+
+      // Update the current game name
+      currentGameName = zipFileName;
+
+      EJS_player = '#gameScreen';
+      EJS_gameUrl = './zipFiles/' + zipFileName;
+      EJS_gameID = 1;
+      EJS_oldCores = true; 
+      if (systemCode == 2) {
+        EJS_core = 'segaMD';
+      } else if (systemCode == 1) {
+        EJS_core = 'mame2003';
+      } else if (systemCode == 3) {
+        EJS_core = 'fbneo';
+        EJS_biosUrl = './neogeo.zip'
+        gameScreen.style.transform = 'translateX(-27%)';
+      } else if (systemCode == 4) {
+        EJS_core = 'pce';
+        EJS_biosUrl = './syscard3.pce'
+      } else if (systemCode == 5) {
+        EJS_core = 'snes';
+        EJS_mouse = false; 
+        EJS_multitap = false; 
+      } else if (systemCode == 6) {
+        EJS_core = 'jaguar';
+      }  else if (systemCode == 7) {
+        EJS_core = 'sega32x';
+      } else if (systemCode == 8) {
+        EJS_core = 'nes'; 
+        EJS_lightgun = false; 
+      } else if (systemCode == 9) {
+        EJS_core = 'n64';
+      } else if (systemCode == 10) {
+        EJS_core = 'gba';
+      }
+
+      // START GAME
+      gameStartTime = Date.now(); // Store the timestamp when the game starts
+      lastKeyPressTime = gameStartTime;  // Initialize lastKeyPressTime
+
+      // Remove the old loaderScript
+      const oldLoaderScript = document.querySelector('script[src="https://www.emulatorjs.com/loader.js"]');
+      if (oldLoaderScript) {
+        oldLoaderScript.remove();
+      }
+
+      const loaderScript = document.createElement('script');
+      loaderScript.src = 'https://www.emulatorjs.com/loader.js';
+      document.body.appendChild(loaderScript);
+
+      // Update the UI elements
+      document.getElementById('backButton').style.display = "block";
+      document.getElementById('genre-buttons-container').style.display = "none";
+      document.getElementById('searchInput').style.display = "none";
+      document.getElementById('upButton').style.display = "block";
+      document.getElementById('downButton').style.display = "block";
+      document.getElementById('plusButton').style.display = "flex";
+      document.getElementById('controlButton').style.display = "flex";
+
+
+
+      // Hide game buttons
+      for (let i = 0; i < gameButtons.length; i++) {
+        gameButtons[i].style.display = 'none';
+      }
+
+      gameLoaded = true;
+
+
+      document.getElementById('randomButton').style.display = "none";
+      document.getElementById('systemsButton').style.display = "none";
+
+      // Center and scale the game screen
+      const containerWidth = gameScreenContainer.clientWidth;
+      const containerHeight = gameScreenContainer.clientHeight;
+      const gameAspectRatio = 4/3; // Change this to match the aspect ratio of your game screen
+      const containerAspectRatio = containerWidth / containerHeight;
+
+      if (gameAspectRatio > containerAspectRatio) {
+        // Game screen is wider than container, so scale to fit width
+        const scaleFactor = containerWidth / gameScreen.width;
+        const newHeight = gameScreen.height * scaleFactor;
+        gameScreen.style.width = containerWidth + 'px';
+        gameScreen.style.height = newHeight + 'px';
+        gameScreen.style.marginTop = ((containerHeight - newHeight) / 2) + 'px';
+      } else {
+        // Game screen is taller than container, so scale to fit height
+        const scaleFactor = containerHeight / gameScreen.height;
+        const newWidth = gameScreen.width * scaleFactor;
+        gameScreen.style.width = newWidth + 'px';
+        gameScreen.style.height = containerHeight + 'px';
+        gameScreen.style.marginLeft = ((containerWidth - newWidth) / 2) + 'px';
+      }
+
+
+      const originalConsoleLog = console.log;
+      console.log = function(message) {
+        originalConsoleLog.apply(console, arguments);
+
+
+        if (message === 'mame2003' || message === 'segaMD' || message === 'fbneo' || message === 'pce' || message === 'snes' || message === "jaguar" || message === "sega32x" || message ==="nes") {
+
+          const countdownElement = document.createElement('div');
+          countdownElement.id = 'countdown';
+          countdownElement.style.position = 'fixed';
+          countdownElement.style.top = '50%';
+          countdownElement.style.left = '50%';
+          countdownElement.style.transform = 'translate(-50%, -50%)';
+          countdownElement.style.fontSize = '7vw';
+          countdownElement.style.fontWeight = 'bolder';
+          countdownElement.style.color = 'white';
+          countdownElement.style.zIndex = '10000';
+          document.body.appendChild(countdownElement);
+        }
+      };
+
+      let originalButton = document.querySelector("[data-btn='netplay']");
+        newButton.addEventListener("click", function() {
+            originalButton.click();
+        });
+      }
+
+    function endGame() {
+      const gameEndTime = Date.now(); // Capture the timestamp when the game ends
+      
+      const gameDuration = gameEndTime - gameStartTime; // Calculate game duration in milliseconds
+      console.log(`The game session lasted ${gameDuration/1000} seconds.`);
+      // Here you can do something with gameDuration, like send it to your server
+    }
+
+    // Function to handle the 'beforeunload' event
+    function handleBeforeUnload(event) {
+      // Prompt the user with a confirmation dialog
+      event.preventDefault(); // If you prevent default behavior in Mozilla Firefox
+      event.returnValue = ''; // Chrome requires returnValue to be set
+    }
+
+    // Function to handle the 'unload' event
+    function handleUnload() {
+      endGame();
+    }
+
+    // Add event listeners
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener('unload', handleUnload);
+
+    // Update lastKeyPressTime whenever a key is pressed
+    let cumulativeDownTime = 0;
+    window.addEventListener('keydown', () => {
+      const currentKeyPressTime = Date.now();
+      const timeSinceLastKey = currentKeyPressTime - lastKeyPressTime;
+      console.log("time since last key: " + timeSinceLastKey);
+      cumulativeDownTime += timeSinceLastKey;
+      console.log("cumulative downtime: " + cumulativeDownTime);
+
+      lastKeyPressTime = currentKeyPressTime;
+    });
+
+
+
+    function shuffleList(gameList) {
+      for (let i = gameList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [gameList[i], gameList[j]] = [gameList[j], gameList[i]];
+      }
+      console.log(gameList)
+      return gameList;
+    }
+
+    function sortListAlphabetically(gameList) {
+      gameList.sort((a, b) => a.gameTitle.localeCompare(b.gameTitle));
+      return gameList;
+    }
+
+    function concatAndSortGameLists(...gameLists) {
+      const concatenatedList = gameLists.flat();
+      
+      concatenatedList.sort((a, b) => a.gameTitle.localeCompare(b.gameTitle));
+      return concatenatedList;
+    }
+
+
+
+        
+
+
+    function removeGame() {
+        // Remove the EmulatorJS script element
+        const script = document.querySelector("emulator-loader");
+        if (script) {
+          script.remove();
+        }
+
+        // Set the display property to "none" to hide the game screen
+        document.getElementById('gameScreenContainer').style.display = 'none';
+
+        // Restore the display of other elements
+        document.getElementById('genre-buttons-container').style.display = "block";
+        document.getElementById('searchInput').style.display = "block";
+
+        populateGameButtons(topgames);
+        showButtons();
+
+      }
+
+    let currentGameList = ''
+    async function populateGameButtons(games) {
+          const gamesArray = Object.values(games); // Convert games into an array
+          console.log(games);
+          const gameContainer = document.getElementById('game');
+          gameContainer.innerHTML = ''; // clear existing game buttons
+
+          // Create all game buttons
+          gamesArray.forEach((game, index) => {
+            const button = document.createElement('button');
+            button.classList.add('game-button');
+            button.id = `game${index}`;
+            button.innerText = game.gameTitle; // Use the gameTitle property from the games object
+            button.dataset.zip = game.zipName; // store the zip name in a data attribute
+            button.dataset.system = game.gameSystem; // store the zip name in a data attribute
+
+            button.addEventListener('click', () => {
+              initSpecificGame(button.dataset.zip, button.dataset.system); // pass the zip name to initSpecificGame
+              updateConnectWalletText(button.innerText); // Update the connect wallet button text
+            });
+            gameContainer.appendChild(button);
+          });
+
+          // Search by letter functionality
+          const searchInput = document.getElementById('searchInput');
+          const gameButtons = document.querySelectorAll('.game-button');
+
+          // Function to display only the first N games
+          function displayInitialGames() {
+            let displayedCount = 0;
+            const maxDisplayed = 5;
+            gameButtons.forEach((gameButton, index) => {
+              if (displayedCount < maxDisplayed) {
+                gameButton.style.display = 'inline-block';
+                displayedCount += 1;
+              } else {
+                gameButton.style.display = 'none';
+              }
+            });
+          }
+
+          // Call displayInitialGames to show only the first 6 topgames initially
+          displayInitialGames();
+
+          searchInput.addEventListener('input', (event) => {
+            const searchText = event.target.value.toLowerCase();
+            let displayedCount = 0;
+            const maxDisplayed = 5; // Set the maximum number of displayed game buttons
+
+            const regex = new RegExp(`\\b${searchText}`, 'i');
+
+            gameButtons.forEach((gameButton) => {
+              const gameTitle = gameButton.textContent.toLowerCase();
+              if (displayedCount < maxDisplayed && regex.test(gameTitle)) {
+                gameButton.style.display = 'inline-block';
+                displayedCount += 1; // Increment displayedCount by 1 for each displayed game button
+              } else {
+                gameButton.style.display = 'none';
+              }
+            });
+          });
+        }
+
+        function stopEmulation() {
+          // Remove the game screen contents
+          const gameScreen = document.getElementById('gameScreen');
+          gameScreen.innerHTML = '';
+
+          // Set the display property to "none" to hide the game screen
+          document.getElementById('gameScreenContainer').style.display = 'none';
+        }
+
+        function updateConnectWalletText(gameTitle) {
+          const connectWalletButton = document.getElementById('connectWalletButton');
+          connectWalletButton.innerText = gameTitle;
+        }
+
+    function hideSystemButton() {
+        const systemButtons = document.querySelectorAll('.systems');
+        
+        systemButtons.forEach((button) => {
+          if (button.style.display == 'none') {
+              button.style.display = "flex";
+          }  else  {
+              button.style.display = "none";
+          }
+        });
+    }
+
+    hideSystemButton();
+
+document.addEventListener('click', function(event) {
+  console.log("click detected")
+  if (gameLoading === true) {
+    document.getElementById('line2').innerText = "> Click...";
+    document.getElementById('line2').style.color = "green";
+    document.getElementById('line3').style.display = "block";
+
+  }
+});
+
+let stepNumber = 1; // Initial step number
+
+function incrementStepNumber() {
+  stepNumber = (stepNumber % 4) + 1; // Loop back to 1 if stepNumber exceeds 4
+  updateStepImage();
+}
+
+function decrementStepNumber() {
+  stepNumber = (stepNumber - 2 + 4) % 4 + 1; // Loop back to 4 if stepNumber goes below 1
+  updateStepImage();
+}
+
+function updateStepImage() {
+  const imageElement = document.querySelector('#stepImage');
+  imageElement.src = `./images/step${stepNumber}.png`;
+}
+  
+  
+  </script>
+</body>
+</html>

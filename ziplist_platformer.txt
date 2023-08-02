@@ -1,0 +1,24 @@
+btoads.zip - Battle Toads - Platformer - 2
+castlevania4.zip - Castlevania - Platformer - 5
+comix.zip - Comix Zone - Platformer - 2
+contra.zip - Contra - Platformer - 8
+dkc.zip - Donkey Kong Country - Platformer - 5
+flicky.zip - Flicky - Platformer - 2
+gunstar.zip - Gunstar Heroes - Platformer - 2
+kirbysadv.zip - Kirby's Adeventure - Platformer - 8
+kirbysdl.zip - Kirby's Dreamland - Platformer - 5
+rockman.zip - Mega Man Collection - Platformer - 2
+mslug.zip - Metal Slug - Platformer - 1
+mslug2.zip - Metal Slug 2 - Platformer - 1
+metroid.zip - Metroid - Platformer - 8
+ninjagaiden.zip - Ninja Gaiden - Platformer - 8
+rayman.zip - Rayman - Platformer - 6
+ristar.zip - Ristar - Platformer - 2
+rocket.zip - Rocket Knight Adventures - Platformer - 2
+sparkstr.zip - Rocket Knight 2 - Platformer - 2
+shinobi3.zip - Shinobi III - Platformer - 2
+sonic.zip - Sonic the Hedgehog - Platformer - 2
+sonic2.zip - Sonic the Hedgehog 2 - Platformer - 2
+s3comp.zip - Sonic the Hedgehog 3 - Platformer - 2
+spocket.zip - Sonic Pocket Adventure - Platformer - 11
+vecman2.zip - Vectorman - Platformer - 1

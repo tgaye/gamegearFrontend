@@ -1,0 +1,89 @@
+aof3.zip - Art of Fighting - Fighting - 1
+asurabld.zip - Asura Blade - Fighting - 1
+asurabus.zip - Asura Buster - Fighting - 1
+breakrev.zip - Breakers Revenge - Fighting - 1
+cybotsj.zip - Cyberbots - Fighting - 1
+dbz.zip - Dragon Ball Z - Fighting - 1
+fatfury3.zip - Fatal Fury - Fighting - 1
+rbff2.zip - Real Bout - Fighting - 1
+kabukikl.zip - Kabuki Klash - Fighting - 1
+kizuna.zip - Kizuna: Super Tag Battle - Fighting - 1
+kof98.zip - King of Fighters - Fighting - 1
+mk3.zip - Mortal Kombat 3 - Fighting - 1
+primrage.zip - Primal Rage - Fighting - 1
+ringdest.zip - Ring of Destruction - Fighting - 1
+samsho2.zip - Samurai Shodown 2 - Fighting - 1
+sf2.zip - Street Fighter II - Fighting - 1
+svcboot.zip - SNK Vs. Capcom - Fighting - 1
+lastbld2.zip - The Last Blade - Fighting - 1
+mvsc.zip - Marvel Vs. Capcom - Fighting - 1
+mshvsfu1.zip - Marvel Vs. Street Fighter - Fighting - 1
+pfghtj.zip - Pocket Fighter - Fighting - 1
+xmvsf.zip - Xmen Vs. Street Fighter - Fighting - 1
+xmcotau.zip - Xmen: Children of the Atom - Fighting - 1
+vsavu.zip - Vampire Saviour - Fighting - 1
+dstlku.zip - Vampire Hunter 2 - Fighting - 1
+btoads.zip - Battle Toads - Platformer - 2
+bonk2.zip - Bonk 2 - Platformer - 4
+castlill.zip - Castle of Illusion - Platformer - 2
+castlevania.zip - Castlevania - Platformer - 8
+castlevania4.zip - Super Castlevania - Platformer - 5
+comix.zip - Comix Zone - Platformer - 2
+contrahard.zip - Contra: Hard Cops - Platformer - 2
+contra.zip - Contra - Platformer - 8
+dkc.zip - Donkey Kong Country - Platformer - 5
+ducktales.zip - Ducktales - Platformer - 8
+ejim2u.zip - Earthworm Jim 2 - Platformer - 2
+flicky.zip - Flicky - Platformer - 2
+gunstar.zip - Gunstar Heroes - Platformer - 2
+jungle.zip - Jungle Book - Platformer - 2
+kirbysadv.zip - Kirby's Adeventure - Platformer - 5
+kirbysdl.zip - Kirby's Dreamland - Platformer - 5
+chaotix.zip - Knuckles & Chaotix - Platformer - 7
+lionking.zip - The Lion King - Platformer - 2
+mcdonald.zip - McDonald's Treasure Land - Platformer - 2
+megamanx.zip - Mega Man X - Platformer - 5
+megaman7.zip - Mega Man 7 - Platformer - 5
+mslug.zip - Metal Slug - Platformer - 1
+mslug2.zip - Metal Slug 2 - Platformer - 1
+metroid.zip - Metroid - Platformer - 8
+ninjagaiden.zip - Ninja Gaiden - Platformer - 8
+ngaiden2.zip - Ninja Gaiden 2 - Platformer - 8
+ngaiden3.zip - Ninja Gaiden 3 - Platformer - 8
+rayman.zip - Rayman - Platformer - 6
+ristar.zip - Ristar - Platformer - 2
+rocket.zip - Rocket Knight Adventures - Platformer - 2
+sparkstr.zip - Rocket Knight 2 - Platformer - 2
+rockman.zip - Mega Man Collection - Platformer - 2
+shinobi3.zip - Shinobi III - Platformer - 2
+smetroid.zip - Super Metroid - Platformer - 5
+sonic.zip - Sonic the Hedgehog - Platformer - 2
+sonic2.zip - Sonic the Hedgehog 2 - Platformer - 2
+s3comp.zip - Sonic the Hedgehog 3 - Platformer - 2
+sk.zip - Sonic and Knuckles - Platformer - 2
+sparkstr - Sparkster: Rocket Knight 2 - 2
+vecman2.zip - Vectorman 2 - Platformer - 1
+batrider.zip - Armed Police Batrider - Shooter - 1
+batsugun.zip - Batsugun - Shooter - 1
+blazers.zip - Blazing Lazers - Shooter - 4
+shikgam2.zip - Castle Shikigami 2 - Shooter - 1
+cotton2.zip - Cotton 2 - Shooter - 1
+dariusg.zip - Darius Gaiden - Shooter - 1
+ddonpach.zip - DoDonPachi - Shooter - 1
+gaiares.zip - Gaiares - Shooter - 2
+gigawing.zip - Gigawing - Shooter - 1
+gleylancer.zip - Gleylance - Shooter - 2
+gradius.zip - Gradius - Shooter - 1
+gradius2.zip - Gradius 2 - Shooter - 1
+gradius3.zip - Gradius 3 - Shooter - 1
+ket.zip - Ketsui - Shooter - 1
+mmatrix.zip - Mars Matrix - Shooter - 1
+raiden.zip - Raiden - Shooter - 4
+rayforce.zip - Ray Force - Shooter - 1
+rtype.zip - R type - Shooter - 1
+fantzone.zip - Super Fantasy Zone - Shooter - 1
+spang.zip - Super Pang - Shooter - 1
+tf4.zip - Thunder Force IV - Shooter - 2
+truxton.zip - Truxton - Shooter - 2
+wow.zip - Wings of Wor - Shooter - 2
+xevious.zip - Xevious - Shooter - 1
