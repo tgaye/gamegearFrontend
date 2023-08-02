@@ -535,6 +535,7 @@
 
         async function connectWallet() {
             document.getElementById('connectButton').innerText = "Loading...";
+            console.log("env test: " + process.env.REACT_APP_SECRETWORD);
             if (window.ethereum) {
                 try {
                     const provider = window.ethereum;
@@ -852,7 +853,6 @@
 
         // Call the function to fetch the usernames count and update the HTML element
         fetchUsernamesCount();
-        console.log("env test: " + process.env.REACT_APP_SECRETWORD);
     </script>
 </body>
 </html>
