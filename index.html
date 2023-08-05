@@ -535,7 +535,6 @@
 
         async function connectWallet() {
             document.getElementById('connectButton').innerText = "Loading...";
-            console.log("env test: " + process.env.REACT_APP_SECRETWORD);
             if (window.ethereum) {
                 try {
                     const provider = window.ethereum;
