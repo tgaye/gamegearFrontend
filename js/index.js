@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://34.125.24.42:3000'; // Replace with the URL of your backend server
+const API_BASE_URL = 'https://gameboyapp.com'; // Replace with the URL of your backend server
 
 async function checkUserExistence(userAddress, gameUrl) {
   try {
